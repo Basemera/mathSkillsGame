@@ -21,7 +21,6 @@ var possibleCombinationSum = function(arr, n) {
 };
 
 class Game extends React.Component {
-
   state = {
     selectedNumbers: [],
     numberOfStars: 1 + Math.floor(Math.random()*9),
@@ -30,6 +29,7 @@ class Game extends React.Component {
     numberOfDraws: 5,
     doneStatus: ""
   }
+
   addSelectedNumber = (addedNumber) => {
     if (this.state.selectedNumbers.indexOf(addedNumber) >= 0 || this.state.usedNumbers.indexOf(addedNumber) >= 0) {
       return;
@@ -54,7 +54,6 @@ class Game extends React.Component {
     const sumOfArray = this.state.selectedNumbers.reduce((acc, n) => acc + n, 0);
   this.setState((prevState => ({
      answerIsCorrect: prevState.numberOfStars == sumOfArray,
-    //  usedNumbers: prevState.usedNumbers.push(prevState.selectedNumbers)
   })))
   }
 
@@ -93,6 +92,7 @@ class Game extends React.Component {
       usedNumbers.indexOf(number) == -1)
       return possibleCombinationSum(possibleNumbers, numberOfStars)
   }
+
   gameOverStatus = () => {
     this.setState(prevState => {
       if (prevState.usedNumbers.length == 9) {
@@ -114,10 +114,8 @@ class Game extends React.Component {
         numberOfDraws: 5,
         doneStatus: ""
 
-    }
-    )
-      )
-  }
+    }))}
+
   render() {
     const { selectedNumbers, numberOfStars, usedNumbers, numberOfDraws, doneStatus } = this.state
     return(
@@ -155,7 +153,7 @@ const Star = (props) => {
     stars.push(<i key = {i} className = "fa fa-star"></i>)
   }
   return (
-    <div className = "col-5">
+    <div className = "col-2">
      {stars}
     </div>
   )
@@ -181,7 +179,7 @@ const GameButton = (props) => {
       </button>
     </div>
     break
-    
+
     default:
     button =
     <div className = "col-2">
@@ -201,7 +199,7 @@ const GameButton = (props) => {
 
 const Answer = (props) => {
   return (
-    <div className = "col-5">
+    <div className = "col-2">
       {props.selectedNumbers.map((number, i) =>
       <span key = {i} onClick = {() => {props.removeSelectedNumber(number)}}>{number}</span>)}
     </div>
