@@ -11,7 +11,7 @@ const Number = props => {
     }
   };
   return (
-    <div className="card text-center">
+    <div className="card text-center col-4">
       <div>
         {Number.list.map((number, i) => (
           <span
